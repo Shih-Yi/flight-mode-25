@@ -3,6 +3,22 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Background Image with Gradient Overlay */}
+      <div className="absolute inset-0">
+        {/* Background gradient layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-gray-900/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30"></div>
+        
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03] bg-repeat" 
+             style={{
+               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' result='noise' seed='1'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+               backgroundSize: '100px 100px'
+             }}>
+        </div>
+      </div>
+
       {/* Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 relative z-10">
         <div className="flex space-x-8">
@@ -21,7 +37,7 @@ export default function Home() {
       </nav>
 
       {/* Main Hero Section */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative">
+      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10">
         {/* Creative Studio Label */}
         <div className="absolute top-16 left-8">
           <div className="text-xs tracking-wider opacity-60">
@@ -64,22 +80,14 @@ export default function Home() {
             </svg>
           </div>
         </div>
-
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 to-black pointer-events-none"></div>
-        
-        {/* Subtle grain effect */}
-        <div className="absolute inset-0 opacity-[0.02] bg-repeat" 
-             style={{
-               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' result='noise' seed='1'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-               backgroundSize: '100px 100px'
-             }}>
-        </div>
       </div>
 
       {/* Camp Introduction Section */}
-      <section id="about" className="relative py-32 px-8">
-        <div className="max-w-7xl mx-auto">
+      <section id="about" className="relative py-32 px-8 z-10">
+        {/* Section background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/10 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="text-xs tracking-wider opacity-60 mb-8">01 / CAMP 2025</div>
@@ -128,8 +136,11 @@ export default function Home() {
       </section>
 
       {/* Quick Navigation Section */}
-      <section className="relative py-20 px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 px-8 z-10">
+        {/* Section background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/5 via-purple-900/10 to-blue-900/5"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-xs tracking-wider opacity-60 mb-12 text-center">02 / QUICK ACCESS</div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -139,7 +150,7 @@ export default function Home() {
               { title: "Contact", subtitle: "Get in Touch", href: "#contact" }
             ].map((item, index) => (
               <a key={index} href={item.href} className="group">
-                <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-lg p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-lg p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 backdrop-blur-sm">
                   <div className="text-xs tracking-wider opacity-50 mb-2">{item.subtitle}</div>
                   <h3 className="text-lg font-medium group-hover:text-white transition-colors">{item.title}</h3>
                   <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -155,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Latest Announcements Section */}
-      <section id="announcements" className="relative py-20 px-8">
+      <section id="announcements" className="relative py-20 px-8 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-12">
             <div>
@@ -200,8 +211,11 @@ export default function Home() {
       </section>
 
       {/* Teams Preview Section */}
-      <section id="teams" className="relative py-32 px-8">
-        <div className="max-w-7xl mx-auto">
+      <section id="teams" className="relative py-32 px-8 z-10">
+        {/* Section background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/5 via-blue-900/8 to-purple-900/5"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-xs tracking-wider opacity-60 mb-12 text-center">04 / OUR TEAMS</div>
           <h2 className="font-space-grotesk text-5xl md:text-6xl font-bold text-center mb-20">
             Worship Teams
@@ -229,7 +243,7 @@ export default function Home() {
               }
             ].map((team, index) => (
               <div key={index} className="group">
-                <div className="bg-gradient-to-br from-gray-800/20 to-gray-900/20 rounded-lg p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:transform hover:scale-105">
+                <div className="bg-gradient-to-br from-gray-800/20 to-gray-900/20 rounded-lg p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:transform hover:scale-105 backdrop-blur-sm">
                   <div className="text-xs tracking-wider opacity-50 mb-3">{team.subtitle}</div>
                   <h3 className="text-2xl font-semibold mb-4 group-hover:text-white transition-colors">{team.title}</h3>
                   <p className="text-sm leading-relaxed opacity-80 mb-6">{team.description}</p>
@@ -249,8 +263,11 @@ export default function Home() {
       </section>
 
       {/* Quick Links Footer */}
-      <section className="relative py-20 px-8 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 px-8 border-t border-white/10 z-10">
+        {/* Footer background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/10 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-xs tracking-wider opacity-60 mb-12 text-center">05 / QUICK LINKS</div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
