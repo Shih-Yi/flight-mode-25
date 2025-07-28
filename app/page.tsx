@@ -133,11 +133,11 @@ export default function Home() {
             </div>
 
              {/* Date Display Above Main Heading */}
-        <div className="text-center mb-8">
-          <div className="text-white text-lg font-medium tracking-wide">
-            25-27 October
-          </div>
-        </div>
+            <div className="text-center mb-8">
+              <div className="text-white text-lg font-medium tracking-wide">
+                25-27 October
+              </div>
+            </div>
         
             <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative mb-4">
               {/* Background image text */}
@@ -167,20 +167,20 @@ export default function Home() {
 
 
         {/* Description */}
-        <div className="absolute bottom-32 right-8 max-w-xs text-right">
-          <div className="space-y-4">
+        <div className="absolute bottom-76 md:bottom-32 right-4 md:right-8 max-w-xs text-right transform -rotate-90 md:rotate-0 origin-bottom-right">
+          <div className="space-y-1">
             {/* Description */}
-            <p className="text-sm leading-relaxed opacity-80">
+            <p className="text-xs md:text-sm leading-relaxed opacity-50 md:opacity-80">
               Praise & Worship<br/>
-              <span className="font-semibold text-white">Camp 2025</span> <br/>
+              <span className="font-semibold text-white opacity-90 md:opacity-100">Camp 2025</span> <br/>
               
             </p>
-            <div className="w-12 h-px bg-white/30 ml-auto mt-4"></div>
+            <div className="w-12 h-px bg-white/30 ml-auto mt-1"></div>
           </div>
         </div>
 
                   {/* Flight Mode Scroll Indicator */}
-          <div className="absolute bottom-8 md:bottom-2 left-1/2 transform -translate-x-1/2 group cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+          <div className="absolute bottom-48 md:bottom-2 left-1/2 transform -translate-x-1/2 group cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
             {/* Outer ring */}
             <div className="relative w-20 h-20 rounded-full border border-white/15 hover:border-white/30 transition-all duration-500 group-hover:scale-110">
             
