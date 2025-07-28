@@ -155,13 +155,29 @@
     /* Force scroll attachment on mobile for better performance */
     background-attachment: scroll !important;
     /* Improve background positioning on mobile */
-    background-size: cover;
-    background-position: center center;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
     /* Prevent background from jumping during scroll */
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
     /* Smooth scrolling performance */
     will-change: transform;
+    /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Ensure background shows on mobile */
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  /* Fallback for mobile browsers that struggle with background-clip */
+  @supports not (-webkit-background-clip: text) {
+    .bg-clip-text {
+      color: rgba(255, 255, 255, 0.8) !important;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
+    }
   }
 }
 
