@@ -20,19 +20,19 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex justify-between items-center px-8 py-6 relative z-10">
-        <div className="flex space-x-8">
-          <a href="#about" className="text-sm tracking-wide hover:text-gray-300 transition-colors">About</a>
-          <a href="#teams" className="text-sm tracking-wide hover:text-gray-300 transition-colors">Teams</a>
+      <nav className="flex justify-between items-center px-4 md:px-8 py-6 relative z-10">
+        <div className="flex space-x-4 md:space-x-8">
+          <a href="#about" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">About</a>
+          <a href="#teams" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">Teams</a>
         </div>
         
-        <div className="absolute left-1/2 transform -translate-x-1/2">
+        <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
           <h1 className="text-sm tracking-[0.2em] font-medium">FLIGHT MODE</h1>
         </div>
         
-        <div className="flex space-x-8">
-          <a href="#announcements" className="text-sm tracking-wide hover:text-gray-300 transition-colors">News</a>
-          <a href="#contact" className="text-sm tracking-wide hover:text-gray-300 transition-colors">Contact</a>
+        <div className="flex space-x-4 md:space-x-8">
+          <a href="#announcements" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">News</a>
+          <a href="#contact" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">Contact</a>
         </div>
       </nav>
 
