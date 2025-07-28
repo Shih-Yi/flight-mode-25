@@ -66,7 +66,9 @@ export default function Home() {
                 style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
                   WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 }}
               >
                 ON BOARD
@@ -89,7 +91,9 @@ export default function Home() {
                 style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
                   WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 }}
               >
                 WITH GOD
@@ -112,7 +116,9 @@ export default function Home() {
                 style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
                   WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 }}
               >
                 2025
