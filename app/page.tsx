@@ -8,7 +8,7 @@ export default function Home() {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
         {/* Background gradient layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-800/20 via-blue-900/20 to-black"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-gray-900/30"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30"></div>
         
@@ -48,10 +48,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Arrow Icon */}
-        <div className="absolute top-16 right-8">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        {/* Paper Airplane Icon */}
+        <div className="absolute top-16 right-8 cursor-pointer group">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-315 group-hover:scale-110 group-hover:rotate-[57deg]">
+            <path d="M3 3L21 12L3 21L8 12L3 3Z" 
+                  fill="currentColor" className="drop-shadow-lg"/>
           </svg>
         </div>
 
@@ -132,12 +133,17 @@ export default function Home() {
 
         {/* Description */}
         <div className="absolute bottom-32 right-8 max-w-xs text-right">
-          <div className="space-y-2">
-            <p className="text-xs tracking-wider opacity-70 uppercase">Welcome</p>
+          <div className="space-y-4">
+            {/* Date Display */}
+            <div className="inline-block px-4 py-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg border border-blue-300/30 backdrop-blur-sm">
+              <div className="text-xs tracking-widest text-blue-300 uppercase mb-1">October</div>
+              <div className="text-2xl font-bold text-white">25-27</div>
+            </div>
+            
+            {/* Description */}
             <p className="text-sm leading-relaxed opacity-80">
-              to the official group for our<br/>
-              upcoming <span className="font-semibold text-white">Praise & Worship<br/>
-              Camp 2025</span>!
+              Join our Praise & Worship<br/>
+              Camp <span className="font-semibold text-white">2025</span>!
             </p>
             <div className="w-12 h-px bg-white/30 ml-auto mt-4"></div>
           </div>
@@ -205,11 +211,11 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-white/10 pb-3">
                     <span className="text-sm opacity-70">Date</span>
-                    <span className="text-sm font-medium">July 15-18, 2025</span>
+                    <span className="text-sm font-medium">October 25-27, 2025</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-white/10 pb-3">
                     <span className="text-sm opacity-70">Location</span>
-                    <span className="text-sm font-medium">TBD</span>
+                    <span className="text-sm font-medium">Wainui Park Camp, Wainui Valley Rd, Wainui 7582</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-white/10 pb-3">
                     <span className="text-sm opacity-70">Participants</span>
