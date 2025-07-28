@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function Home() {
@@ -141,13 +143,33 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center cursor-pointer hover:border-white/50 transition-colors">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
-              <path d="M12 5V19M12 19L7 14M12 19L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+                  {/* Flight Mode Scroll Indicator */}
+          <div className="absolute bottom-8 md:bottom-2 left-1/2 transform -translate-x-1/2 group cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+            {/* Outer ring */}
+            <div className="relative w-20 h-20 rounded-full border border-white/15 hover:border-white/30 transition-all duration-500 group-hover:scale-110">
+            
+                                        {/* Inner circle with gradient */}
+              <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 backdrop-blur-sm flex items-center justify-center">
+                {/* Airplane icon pointing down */}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-180 group-hover:translate-y-1">
+                  <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" 
+                        fill="currentColor" className="drop-shadow-lg"/>
+                </svg>
+              </div>
+            
+                          {/* Pulsing dot indicator */}
+              <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
           </div>
+          
+          {/* Flight mode text */}
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-xs tracking-wider text-blue-300 whitespace-nowrap">BOARDING</span>
+          </div>
+          
+                      {/* Animated trail pointing to blue dot */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="w-1 h-6 bg-gradient-to-b from-transparent via-blue-400/50 to-blue-400/80 animate-bounce"></div>
+            </div>
         </div>
       </div>
 
