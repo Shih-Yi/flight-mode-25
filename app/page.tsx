@@ -54,11 +54,77 @@ export default function Home() {
         </div>
 
         {/* Main Heading */}
-        <div className="text-center max-w-5xl">
-          <h1 className="font-space-grotesk text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tight mb-12">
-            <div className="mb-4">ON BOARD</div>
-            <div className="mb-4">WITH GOD</div>
-            <div className="text-4xl md:text-6xl lg:text-7xl font-light tracking-[0.1em]">2025</div>
+        <div className="text-center max-w-6xl">
+          <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight mb-12">
+            <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
+              {/* Background image text */}
+              <span 
+                className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                ON BOARD
+              </span>
+              {/* Text stroke for better visibility */}
+              <span 
+                className="absolute inset-0 text-white opacity-20"
+                style={{
+                  WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                ON BOARD
+              </span>
+            </div>
+            <div className="mb-8 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
+              {/* Background image text */}
+              <span 
+                className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                WITH GOD
+              </span>
+              {/* Text stroke for better visibility */}
+              <span 
+                className="absolute inset-0 text-white opacity-20"
+                style={{
+                  WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                WITH GOD
+              </span>
+            </div>
+            <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative">
+              {/* Background image text */}
+              <span 
+                className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                2025
+              </span>
+              {/* Text stroke for better visibility */}
+              <span 
+                className="absolute inset-0 text-white opacity-15"
+                style={{
+                  WebkitTextStroke: '2px rgba(255, 255, 255, 0.2)',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                2025
+              </span>
+            </div>
           </h1>
         </div>
 
