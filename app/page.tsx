@@ -37,7 +37,7 @@ export default function Home() {
       </nav>
 
       {/* Main Hero Section */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10">
+      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 mt-4">
         {/* Creative Studio Label */}
         <div className="absolute top-16 left-8">
           <div className="text-xs tracking-wider opacity-60">
@@ -54,8 +54,8 @@ export default function Home() {
         </div>
 
         {/* Main Heading */}
-        <div className="text-center max-w-6xl">
-          <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight mb-12">
+        <div className="text-center max-w-6xl mb-20">
+          <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight">
             <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
               <span 
@@ -79,7 +79,7 @@ export default function Home() {
                 ON BOARD
               </span>
             </div>
-            <div className="mb-8 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
+            <div className="mb-6 lg:mb-6 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
               <span 
                 className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
@@ -102,7 +102,7 @@ export default function Home() {
                 WITH GOD
               </span>
             </div>
-            <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative">
+            <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative mb-4">
               {/* Background image text */}
               <span 
                 className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
@@ -118,7 +118,7 @@ export default function Home() {
               <span 
                 className="absolute inset-0 text-white opacity-15"
                 style={{
-                  WebkitTextStroke: '2px rgba(255, 255, 255, 0.2)',
+                  WebkitTextStroke: '2px rgba(255, 255, 255, 0.4)',
                   WebkitTextFillColor: 'transparent'
                 }}
               >
@@ -129,17 +129,20 @@ export default function Home() {
         </div>
 
         {/* Description */}
-        <div className="absolute bottom-32 right-8 max-w-sm text-right">
-          <p className="text-sm leading-relaxed opacity-80">
-            The first full-stack Worship<br/>
-            Camp experience integrating Faith<br/>
-            technology to deliver best-in-<br/>
-            class spiritual experience.
-          </p>
+        <div className="absolute bottom-32 right-8 max-w-xs text-right">
+          <div className="space-y-2">
+            <p className="text-xs tracking-wider opacity-70 uppercase">Welcome</p>
+            <p className="text-sm leading-relaxed opacity-80">
+              to the official group for our<br/>
+              upcoming <span className="font-semibold text-white">Praise & Worship<br/>
+              Camp 2025</span>!
+            </p>
+            <div className="w-12 h-px bg-white/30 ml-auto mt-4"></div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center cursor-pointer hover:border-white/50 transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
               <path d="M12 5V19M12 19L7 14M12 19L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
