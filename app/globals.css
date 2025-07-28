@@ -139,39 +139,3 @@
 .animate-spin-slow {
   animation: spin-slow 8s linear infinite;
 }
-
-/* Background-clip text support detection */
-@supports (-webkit-background-clip: text) {
-  .bg-clip-text {
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
-/* Mobile-specific fixes for background-clip text */
-@media screen and (max-width: 767px) {
-  .bg-clip-text {
-    /* Force scroll attachment on mobile for better performance */
-    background-attachment: scroll !important;
-    /* Improve background positioning on mobile */
-    background-size: cover;
-    background-position: center center;
-    /* Prevent background from jumping during scroll */
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-    /* Smooth scrolling performance */
-    will-change: transform;
-  }
-}
-
-/* Desktop-specific optimizations */
-@media screen and (min-width: 768px) {
-  .bg-clip-text {
-    /* Ensure smooth fixed background on desktop */
-    background-size: cover;
-    background-position: center center;
-    /* Optimize for fixed attachment */
-    will-change: auto;
-  }
-}
