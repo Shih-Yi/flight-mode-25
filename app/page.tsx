@@ -1,25 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIfMobile = () => {
-      const userAgent = navigator.userAgent;
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-      const isSmallScreen = window.innerWidth < 768;
-      setIsMobile(isMobileDevice || isSmallScreen);
-    };
-
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
-
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Background Image with Gradient Overlay */}
@@ -79,8 +62,8 @@ export default function Home() {
             <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
               <span 
-                className={`${isMobile ? 'text-white' : 'bg-clip-text text-transparent bg-cover bg-center md:bg-fixed'}`}
-                style={isMobile ? {} : {
+                className="bg-clip-text text-transparent bg-cover bg-center md:bg-fixed"
+                style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
@@ -88,18 +71,6 @@ export default function Home() {
               >
                 ON BOARD
               </span>
-              {/* Mobile version with gradient text */}
-              {isMobile && (
-                <span 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-                  style={{
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  ON BOARD
-                </span>
-              )}
               {/* Text stroke for better visibility */}
               <span 
                 className="absolute inset-0 text-white opacity-20"
@@ -114,8 +85,8 @@ export default function Home() {
             <div className="mb-6 lg:mb-6 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
               <span 
-                className={`${isMobile ? 'text-white' : 'bg-clip-text text-transparent bg-cover bg-center md:bg-fixed'}`}
-                style={isMobile ? {} : {
+                className="bg-clip-text text-transparent bg-cover bg-center md:bg-fixed"
+                style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
@@ -123,18 +94,6 @@ export default function Home() {
               >
                 WITH GOD
               </span>
-              {/* Mobile version with gradient text */}
-              {isMobile && (
-                <span 
-                  className="absolute inset-0 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
-                  style={{
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  WITH GOD
-                </span>
-              )}
               {/* Text stroke for better visibility */}
               <span 
                 className="absolute inset-0 text-white opacity-20"
@@ -149,8 +108,8 @@ export default function Home() {
             <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative mb-4">
               {/* Background image text */}
               <span 
-                className={`${isMobile ? 'text-white' : 'bg-clip-text text-transparent bg-cover bg-center md:bg-fixed'}`}
-                style={isMobile ? {} : {
+                className="bg-clip-text text-transparent bg-cover bg-center md:bg-fixed"
+                style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
@@ -158,18 +117,6 @@ export default function Home() {
               >
                 2025
               </span>
-              {/* Mobile version with gradient text */}
-              {isMobile && (
-                <span 
-                  className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"
-                  style={{
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  2025
-                </span>
-              )}
               {/* Text stroke for better visibility */}
               <span 
                 className="absolute inset-0 text-white opacity-15"
