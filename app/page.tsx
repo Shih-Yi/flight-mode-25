@@ -41,12 +41,38 @@ export default function Home() {
       {/* Main Hero Section */}
       <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 mt-4">
         {/* Creative Studio Label */}
-        <div className="absolute top-16 left-8">
-          <div className="text-xs tracking-wider opacity-60">
-            <div>Worship</div>
-            <div>Camp</div>
+                 {/* Desktop version - two lines */}
+         <div className="absolute top-48 left-8 transform -rotate-90 origin-top-left hidden md:flex">
+           <div className="flex flex-col space-y-2">
+            
+          <div className="flex items-center space-x-3">
+            <div className="w-16 h-px bg-white/30"></div>
+            <div className="text-xs tracking-[0.3em] opacity-60 font-medium">
+              JOURNEY
+            </div>
+          </div>
+
+           <div className="flex items-center space-x-3">
+            <div className="w-16 h-px bg-white/30"></div>
+            <div className="text-xs tracking-[0.3em] opacity-60 font-medium">
+              TOGETHER
+            </div>
+          </div>
+
+           <div className="mt-12"></div>
+            
           </div>
         </div>
+          
+          {/* Mobile version - one line, closer to edge */}
+          <div className="absolute top-48 left-2 transform -rotate-90 origin-top-left md:hidden">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-px bg-white/30"></div>
+              <div className="text-xs tracking-[0.3em] opacity-60 font-medium">
+                FLIGHT MODE
+              </div>
+            </div>
+          </div>
 
         {/* Paper Airplane Icon */}
         <div className="absolute top-16 right-8 cursor-pointer group">
@@ -57,7 +83,7 @@ export default function Home() {
         </div>
 
         {/* Main Heading */}
-        <div className="text-center max-w-6xl mb-20">
+        <div className="text-center max-w-6xl mb-20 -mt-48 md:mt-0">
           <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight">
             <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
@@ -105,6 +131,14 @@ export default function Home() {
                 WITH GOD
               </span>
             </div>
+
+             {/* Date Display Above Main Heading */}
+        <div className="text-center mb-8">
+          <div className="text-white text-lg font-medium tracking-wide">
+            25-27 October
+          </div>
+        </div>
+        
             <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative mb-4">
               {/* Background image text */}
               <span 
@@ -131,19 +165,15 @@ export default function Home() {
           </h1>
         </div>
 
+
         {/* Description */}
         <div className="absolute bottom-32 right-8 max-w-xs text-right">
           <div className="space-y-4">
-            {/* Date Display */}
-            <div className="inline-block px-4 py-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg border border-blue-300/30 backdrop-blur-sm">
-              <div className="text-xs tracking-widest text-blue-300 uppercase mb-1">October</div>
-              <div className="text-2xl font-bold text-white">25-27</div>
-            </div>
-            
             {/* Description */}
             <p className="text-sm leading-relaxed opacity-80">
-              Join our Praise & Worship<br/>
-              Camp <span className="font-semibold text-white">2025</span>!
+              Praise & Worship<br/>
+              <span className="font-semibold text-white">Camp 2025</span> <br/>
+              
             </p>
             <div className="w-12 h-px bg-white/30 ml-auto mt-4"></div>
           </div>
