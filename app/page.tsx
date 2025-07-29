@@ -1,8 +1,32 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      setIsScrolling(true);
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 2000);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Background Image with Gradient Overlay */}
@@ -132,12 +156,18 @@ export default function Home() {
               </span>
             </div>
 
-             {/* Date Display Above Main Heading */}
-            <div className="text-center mb-8">
-              <div className="text-white text-lg font-medium tracking-wide">
-                25-27 October
-              </div>
-            </div>
+                          {/* Date Display Above Main Heading */}
+        <div className="text-center mb-8">
+          <div className={`text-white text-lg font-medium tracking-wide transition-all duration-300 ${
+            isScrolling ? 'text-yellow-400' : 'text-white'
+          }`}
+          style={{
+            filter: isScrolling ? 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.6))' : 'none',
+            textShadow: isScrolling ? '0 0 20px rgba(255, 215, 0, 0.5)' : 'none'
+          }}>
+            25-27 October
+          </div>
+        </div>
         
             <div className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-[0.2em] relative mb-4">
               {/* Background image text */}
@@ -151,12 +181,17 @@ export default function Home() {
               >
                 2025
               </span>
-              {/* Text stroke for better visibility */}
+              {/* Text stroke for better visibility with gold shimmer */}
               <span 
-                className="absolute inset-0 text-white opacity-15"
+                className={`absolute inset-0 text-white transition-all duration-300 ${
+                  isScrolling ? 'opacity-50' : 'opacity-15'
+                }`}
                 style={{
-                  WebkitTextStroke: '2px rgba(255, 255, 255, 0.4)',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextStroke: isScrolling 
+                    ? '2px rgba(255, 215, 0, 0.7)' 
+                    : '2px rgba(255, 255, 255, 0.4)',
+                  WebkitTextFillColor: 'transparent',
+                  filter: isScrolling ? 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.4))' : 'none'
                 }}
               >
                 2025
