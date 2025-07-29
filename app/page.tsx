@@ -29,10 +29,8 @@ export default function Home() {
       if (Math.abs(scrollDiff) > 5) { // 增大阈值避免误判
         if (scrollDiff > 0) {
           setScrollDirection('down');
-          console.log('向下滚动', scrollTop, lastScrollY.current);
         } else {
           setScrollDirection('up');
-          console.log('向上滚动', scrollTop, lastScrollY.current);
         }
       }
       
@@ -76,9 +74,10 @@ export default function Home() {
         
         {/* Flying airplane indicator */}
         <div 
-          className="absolute left-1/2 w-6 h-6 transition-all duration-300 ease-out z-10"
+          className="absolute w-6 h-6 transition-all duration-300 ease-out z-10"
           style={{ 
             top: `${scrollProgress * 100}%`,
+            left: 'calc(50% - 0.51px)',
             transform: 'translate(-50%, -50%)'
           }}
         >
@@ -91,7 +90,7 @@ export default function Home() {
                isScrolling ? 'text-blue-400 scale-125' : 'text-blue-200'
              }`}
                          style={{
-               filter: isScrolling ? 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.6))' : 'none',
+               filter: isScrolling ? 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.9))' : 'none',
                transform: scrollDirection === 'down' ? 'rotate(180deg)' : 'rotate(0deg)',
                transition: 'transform 0.3s ease'
              }}
@@ -312,7 +311,7 @@ export default function Home() {
               </div>
             
                           {/* Rotating dot indicator */}
-              <div className="absolute inset-0" style={{animation: 'spin 4s linear infinite'}}>
+              <div className="absolute inset-0 animate-spin" style={{animationDuration: '4s'}}>
                 <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
               </div>
           </div>
