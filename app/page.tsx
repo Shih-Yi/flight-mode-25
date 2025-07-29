@@ -1,17 +1,44 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState('down');
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
     
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      ) - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+      
+                   // 检测滚动方向 - 使用ref来避免闭包问题
+      const scrollDiff = scrollTop - lastScrollY.current;
+      if (Math.abs(scrollDiff) > 5) { // 增大阈值避免误判
+        if (scrollDiff > 0) {
+          setScrollDirection('down');
+          console.log('向下滚动', scrollTop, lastScrollY.current);
+        } else {
+          setScrollDirection('up');
+          console.log('向上滚动', scrollTop, lastScrollY.current);
+        }
+      }
+      
+      lastScrollY.current = scrollTop;
+      setScrollY(scrollTop);
+      setScrollProgress(progress);
       setIsScrolling(true);
       
       clearTimeout(scrollTimeout);
@@ -20,15 +47,62 @@ export default function Home() {
       }, 2000);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // 初始化lastScrollY
+    const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    lastScrollY.current = initialScrollTop;
+    setScrollY(initialScrollTop);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Flight Progress Indicator */}
+      <div className={`fixed top-0 right-4 md:right-8 h-screen w-1 bg-white/10 z-50 pointer-events-none transition-all duration-1000 ease-out ${
+        isScrolling ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+      }`}>
+        {/* Progress track */}
+        <div 
+          className="w-full bg-gradient-to-b from-blue-400 via-purple-500 to-yellow-400 transition-all duration-300 ease-out"
+          style={{ height: `${scrollProgress * 100}%` }}
+        ></div>
+        
+        {/* Flying airplane indicator */}
+        <div 
+          className="absolute left-1/2 w-6 h-6 transition-all duration-300 ease-out z-10"
+          style={{ 
+            top: `${scrollProgress * 100}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
+                     <svg 
+             width="24" 
+             height="24" 
+             viewBox="0 0 24 24" 
+             fill="none" 
+             className={`text-blue-400 transition-all duration-300 ${
+               isScrolling ? 'text-blue-400 scale-125' : 'text-blue-200'
+             }`}
+                         style={{
+               filter: isScrolling ? 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.6))' : 'none',
+               transform: scrollDirection === 'down' ? 'rotate(180deg)' : 'rotate(0deg)',
+               transition: 'transform 0.3s ease'
+             }}
+          >
+            <path 
+              d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" 
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+      </div>
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
         {/* Background gradient layers */}
@@ -237,8 +311,10 @@ export default function Home() {
                 </svg>
               </div>
             
-                          {/* Pulsing dot indicator */}
-              <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                          {/* Rotating dot indicator */}
+              <div className="absolute inset-0" style={{animation: 'spin 4s linear infinite'}}>
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
+              </div>
           </div>
           
           {/* Flight mode text */}
