@@ -344,13 +344,11 @@ export default function Home() {
               </h2>
               <div className="space-y-6 text-sm leading-relaxed opacity-80">
                 <p>
-                  A revolutionary experience combining traditional worship with modern technology. 
-                  We will host this unprecedented worship camp in summer 2025, inviting the 
-                  Praise & Worship Team, Choir, and Cantonese Worship Team to join this spiritual journey.
+                  Welcome to the official website for our upcoming Praise & Worship Camp 2025!
                 </p>
                 <p>
-                  Through music, worship, fellowship, and learning, we will explore the depths of faith together 
-                  and experience a more intimate relationship with God.
+                  This is a space for our Praise and Worship Team, Choir, and Cantonese Worship Team to connect, prepare, and journey together as we get ready for an unforgettable weekend of worship, fellowship, and spiritual renewal. 
+
                 </p>
               </div>
             </div>
@@ -360,11 +358,11 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-white/10 pb-3">
                     <span className="text-sm opacity-70">Date</span>
-                    <span className="text-sm font-medium">October 25-27, 2025</span>
+                    <span className="text-sm font-medium">25-27 October, 2025</span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-center border-b border-white/10 pb-3 space-y-1 md:space-y-0">
                     <span className="text-sm opacity-70">Location</span>
-                    <span className="text-sm font-medium">Wainui Park Camp, Wainui Valley Rd, Wainui 7582</span>
+                    <span className="text-sm font-medium text-right md:text-right break-words max-w-full md:max-w-xs">Wainui Park Camp, Wainui Valley Rd, Wainui 7582</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-white/10 pb-3">
                     <span className="text-sm opacity-70">Participants</span>
@@ -372,7 +370,7 @@ export default function Home() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm opacity-70">Registration</span>
-                    <span className="text-sm font-medium">Opening Soon</span>
+                    <span className="text-sm font-medium">Coming Soon</span>
                   </div>
                 </div>
               </div>
@@ -390,22 +388,59 @@ export default function Home() {
           <div className="text-xs tracking-wider opacity-60 mb-12 text-center">02 / QUICK ACCESS</div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Schedule", subtitle: "Camp Program", href: "#schedule" },
-              { title: "Teams", subtitle: "Worship Teams", href: "#teams" },
-              { title: "Registration", subtitle: "Sign Up", href: "#registration" },
-              { title: "Contact", subtitle: "Get in Touch", href: "#contact" }
+              { title: "Schedule", subtitle: "Camp Program", href: "#schedule", available: false, status: "To Be Announced"},
+              { title: "Teams", subtitle: "Worship Teams", href: "#teams", available: true },
+              { title: "Registration", subtitle: "Sign Up", href: "#registration", available: false, status: "Coming Soon" },
+              { title: "Contact", subtitle: "Get in Touch", href: "#contact", available: true }
             ].map((item, index) => (
-              <a key={index} href={item.href} className="group">
-                <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-lg p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 backdrop-blur-sm">
+              <div key={index} className={`group relative ${item.available ? 'cursor-pointer' : 'cursor-default'}`}>
+                <div className={`bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-lg p-6 border border-white/10 transition-all duration-300 backdrop-blur-sm relative overflow-hidden ${
+                  item.available 
+                    ? 'hover:border-white/20 hover:transform hover:scale-105' 
+                    : 'hover:border-sky-400/30 hover:from-sky-900/10 hover:to-blue-900/10'
+                }`}>
                   <div className="text-xs tracking-wider opacity-50 mb-2">{item.subtitle}</div>
-                  <h3 className="text-lg font-medium group-hover:text-white transition-colors">{item.title}</h3>
-                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
+                  <h3 className={`text-lg font-medium transition-colors ${
+                    item.available ? 'group-hover:text-white' : 'group-hover:text-sky-300'
+                  }`}>{item.title}</h3>
+                  
+                  {/* Available items - show arrow */}
+                  {item.available && (
+                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  )}
+                  
+                  {/* Unavailable items - show status */}
+                  {!item.available && (
+                    <div className="mt-4">
+                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <div className="text-xs tracking-wider text-sky-400 bg-sky-400/10 px-2 py-1 rounded border border-sky-400/20">
+                          {item.status}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Subtle loading dots animation for unavailable items */}
+                  {!item.available && (
+                    <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-60 transition-opacity">
+                      <div className="flex space-x-1">
+                        <div className="w-1 h-1 bg-sky-400/60 rounded-full animate-pulse" style={{animationDelay: '0s'}}></div>
+                        <div className="w-1 h-1 bg-sky-400/60 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-1 h-1 bg-sky-400/60 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </a>
+                
+                {/* Clickable link only for available items */}
+                {item.available && (
+                  <a href={item.href} className="absolute inset-0 z-10"></a>
+                )}
+              </div>
             ))}
           </div>
         </div>
