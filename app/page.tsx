@@ -391,7 +391,7 @@ export default function Home() {
               { title: "Schedule", subtitle: "Camp Program", href: "#schedule", available: false, status: "To Be Announced"},
               { title: "Teams", subtitle: "Worship Teams", href: "#teams", available: true },
               { title: "Registration", subtitle: "Sign Up", href: "#registration", available: false, status: "Coming Soon" },
-              { title: "Contact", subtitle: "Get in Touch", href: "#contact", available: true }
+              { title: "Contact", subtitle: "Quick Links", href: "#links", available: true }
             ].map((item, index) => (
               <div key={index} className={`group relative ${item.available ? 'cursor-pointer' : 'cursor-default'}`}>
                 <div className={`bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-lg p-6 border border-white/10 transition-all duration-300 backdrop-blur-sm relative overflow-hidden ${
@@ -544,7 +544,7 @@ export default function Home() {
       </section>
 
       {/* Quick Links Footer */}
-      <section className="relative py-20 px-8 border-t border-white/10 z-10">
+      <section id="links" className="relative py-20 px-8 border-t border-white/10 z-10">
         {/* Footer background */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/10 to-transparent"></div>
         
@@ -568,6 +568,98 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="relative py-16 px-8 border-t border-white/5 z-10">
+        {/* Footer background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-950/50 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            {/* Brand Section */}
+            <div className="lg:col-span-2">
+              <div className="mb-6">
+                <h3 className="text-2xl font-space-grotesk font-bold tracking-wide mb-4">FLIGHT MODE</h3>
+                <p className="text-sm leading-relaxed opacity-70 max-w-md">
+                  Join us for an unforgettable weekend of worship, fellowship, and spiritual renewal. 
+                  Together we journey in faith, growing closer to God and each other.
+                </p>
+              </div>
+              
+              {/* Camp Details */}
+              <div className="space-y-2 text-sm">
+                <div className="flex items-center space-x-3">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-sky-400">
+                    <path d="M8 2V5M16 2V5M3.5 9.09H20.5M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className="opacity-80">25-27 October, 2025</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-sky-400 mt-0.5">
+                    <path d="M12 13.43C13.7231 13.43 15.12 12.0331 15.12 10.31C15.12 8.58687 13.7231 7.19 12 7.19C10.2769 7.19 8.88 8.58687 8.88 10.31C8.88 12.0331 10.2769 13.43 12 13.43Z" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M3.62001 8.49C5.59001 -0.169998 18.42 -0.159997 20.38 8.5C21.53 13.58 18.37 17.88 15.6 20.54C13.59 22.48 10.41 22.48 8.39001 20.54C5.63001 17.88 2.47001 13.57 3.62001 8.49Z" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
+                  <span className="opacity-80">Wainui Park Camp, Wainui Valley Rd, Wainui 7582</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4 tracking-wide">Quick Links</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#about" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">About Camp</a></li>
+                <li><a href="#teams" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Our Teams</a></li>
+                <li><a href="#schedule" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Schedule</a></li>
+                <li><a href="#registration" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Registration</a></li>
+              </ul>
+            </div>
+            
+            {/* Camp Info */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4 tracking-wide">Camp Info</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#accommodation" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Accommodation</a></li>
+                <li><a href="#transport" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Transportation</a></li>
+                <li><a href="#packing" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Packing List</a></li>
+                <li><a href="#faq" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Bottom Section */}
+          <div className="mt-12 pt-8 border-t border-white/5">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="text-sm opacity-60">
+                © 2025 Flight Mode Camp. All rights reserved.
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex items-center space-x-6">
+                <span className="text-xs tracking-wider opacity-40">FOLLOW US</span>
+                <div className="flex space-x-4">
+                  <a href="#" className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.219-.359-.219c0-1.781 1.032-3.111 2.311-3.111 1.092 0 1.618.816 1.618 1.794 0 1.094-.698 2.726-1.059 4.238-.301 1.781.895 3.227 2.670 3.227 3.205 0 5.375-4.317 5.375-9.437 0-3.785-2.543-6.615-7.166-6.615-5.301 0-8.56 3.892-8.56 8.229 0 1.498.546 2.559 1.393 3.349.152.179.152.487.105.746-.105.487-.152.974-.152.974-.179.974-.698.487-1.276.179-2.379-1.093-3.349-3.349-3.349-6.067 0-5.301 3.786-11.696 11.174-11.696 5.968 0 9.437 4.158 9.437 8.619 0 5.958-3.111 10.719-7.618 10.719-1.499 0-2.896-.816-3.373-1.794 0 0-.698 2.823-.895 3.478-.179.487-.546 1.199-.895 1.794.698.219 1.56.359 2.378.359 6.621 0 11.988-5.367 11.988-11.987C24.005 5.367 18.638.001 12.017.001z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
