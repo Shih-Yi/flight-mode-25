@@ -3,6 +3,76 @@
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
+// Countdown Timer Component
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    // Set target date to October 25, 2025
+    const targetDate = new Date('2025-10-25T00:00:00');
+
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+      {[
+        { label: 'DAYS', value: timeLeft.days },
+        { label: 'HOURS', value: timeLeft.hours },
+        { label: 'MINUTES', value: timeLeft.minutes },
+        { label: 'SECONDS', value: timeLeft.seconds }
+      ].map((item, index) => (
+        <div key={index} className="group">
+          <div className="bg-black/60 rounded-lg p-4 md:p-6 border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 backdrop-blur-sm relative overflow-hidden">
+            {/* Digital Display Effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-400/5 to-transparent pointer-events-none"></div>
+            
+            {/* LED-style number display */}
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-mono font-bold text-blue-400 mb-2 group-hover:text-blue-300 transition-colors filter drop-shadow-lg"
+                   style={{
+                     textShadow: '0 0 10px rgba(96, 165, 250, 0.7), 0 0 20px rgba(96, 165, 250, 0.3), 0 0 30px rgba(96, 165, 250, 0.1)'
+                   }}>
+                {String(item.value).padStart(2, '0')}
+              </div>
+              <div className="text-xs font-mono tracking-wider opacity-70 text-blue-100">
+                {item.label}
+              </div>
+            </div>
+            
+            {/* Scanning line effect */}
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400/60 to-transparent animate-pulse"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -383,6 +453,136 @@ export default function Home() {
         {/* Section Navigation Button */}
         <div className="flex justify-center mt-16 relative z-20">
           <a 
+            href="#countdown"
+            className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">DEPARTURE</span>
+          </a>
+        </div>
+      </section>
+
+      {/* Countdown Section */}
+      <section id="countdown" className="relative py-20 px-8 z-10 overflow-hidden">
+        {/* Airport Terminal Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/15 to-blue-900/10"></div>
+        
+        {/* Animated Airport Elements */}
+        <div className="absolute top-20 left-10 opacity-20 animate-pulse">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-white">
+            <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" fill="currentColor"/>
+          </svg>
+        </div>
+        
+        <div className="absolute bottom-20 right-10 opacity-15 animate-bounce" style={{animationDelay: '1s', animationDuration: '3s'}}>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-white">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative">
+          {/* Airport Departure Board Style Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-4 mb-6">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="text-xs tracking-[0.3em] opacity-60 font-mono">DEPARTURE GATE 07</div>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            </div>
+            
+            <h2 className="font-mono text-4xl md:text-6xl font-bold mb-4 tracking-wider">
+              FLIGHT OBWG25
+            </h2>
+            <div className="text-lg opacity-80 mb-8">Boarding in Progress...</div>
+            
+            {/* Airport Status Bar */}
+            <div className="flex justify-center space-x-8 text-sm mb-12">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                <span className="font-mono">ON TIME</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                <span className="font-mono">GATE OPEN</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <span className="font-mono">BOARDING</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Departure Board Style Countdown */}
+          <div className="bg-black/40 rounded-lg p-8 border border-white/20 backdrop-blur-sm mb-12 max-w-4xl mx-auto">
+            <div className="text-center mb-6">
+              <div className="text-sm font-mono tracking-wider opacity-70 mb-2">TIME TO DEPARTURE</div>
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+            </div>
+            
+            <CountdownTimer />
+            
+            {/* Terminal Display Effect */}
+            <div className="mt-6 text-center">
+              <div className="inline-flex items-center space-x-2 text-sm font-mono opacity-60">
+                <span>▶</span>
+                <span className="animate-pulse">Passengers please proceed to boarding area</span>
+                <span>◀</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Flight Information Board */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-lg p-6 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xs font-mono tracking-wider opacity-60">FLIGHT</div>
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+              </div>
+              <div className="text-lg font-mono font-bold">OBWG25</div>
+              <div className="text-sm opacity-80">Praise & Worship</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-lg p-6 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xs font-mono tracking-wider opacity-60">DESTINATION</div>
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              </div>
+              <div className="text-lg font-mono font-bold">WAINUI</div>
+              <div className="text-sm opacity-80">Park Camp</div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-lg p-6 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xs font-mono tracking-wider opacity-60">GATE</div>
+                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+              </div>
+              <div className="text-lg font-mono font-bold">07</div>
+              <div className="text-sm opacity-80">Now Boarding</div>
+            </div>
+          </div>
+          
+          {/* Airport Announcement */}
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center space-x-3 bg-blue-900/20 px-6 py-3 rounded-full border border-blue-400/30">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-blue-400">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+              </svg>
+              <span className="text-sm font-mono tracking-wide text-blue-300">
+                Final boarding call for Flight Mode 2025
+              </span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-blue-400">
+                <path d="M19 7L12 1L5 7V20H19V7ZM12 3.69L16.71 8H7.29L12 3.69ZM17 18H7V9H17V18Z" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        {/* Section Navigation Button */}
+        <div className="flex justify-center mt-16 relative z-20">
+          <a 
             href="#quick-access"
             className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
           >
@@ -402,7 +602,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/5 via-purple-900/10 to-blue-900/5"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">02 / QUICK ACCESS</div>
+          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">03 / QUICK ACCESS</div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Schedule", subtitle: "Camp Program", href: "#schedule", available: false, status: "To Be Announced"},
@@ -483,7 +683,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <div className="text-xs tracking-wider opacity-60 mb-4">03 / LATEST NEWS</div>
+              <div className="text-xs tracking-wider opacity-60 mb-4">04 / LATEST NEWS</div>
               <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold">Latest Updates</h2>
             </div>
             <a href="#" className="text-sm tracking-wide hover:text-gray-300 transition-colors flex items-center space-x-2">
@@ -544,7 +744,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/5 via-blue-900/8 to-purple-900/5"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">04 / OUR TEAMS</div>
+          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">05 / OUR TEAMS</div>
           <h2 className="font-space-grotesk text-5xl md:text-6xl font-bold text-center mb-20">
             Worship Teams
           </h2>
@@ -611,7 +811,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/10 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">05 / QUICK LINKS</div>
+          <div className="text-xs tracking-wider opacity-60 mb-12 text-center">06 / QUICK LINKS</div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { label: "Camp Details", href: "#details" },
