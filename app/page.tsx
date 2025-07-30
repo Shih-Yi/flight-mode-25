@@ -443,7 +443,18 @@ export default function Home() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm opacity-70">Registration</span>
-                    <span className="text-sm font-medium">Coming Soon</span>
+                    {process.env.NEXT_PUBLIC_REGISTRATION_URL ? (
+                      <a 
+                        href={process.env.NEXT_PUBLIC_REGISTRATION_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        Register Now →
+                      </a>
+                    ) : (
+                      <span className="text-sm font-medium">Coming Soon</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -495,7 +506,7 @@ export default function Home() {
             </div>
             
             <h2 className="font-mono text-4xl md:text-6xl font-bold mb-4 tracking-wider">
-              FLIGHT OBWG25
+              FLIGHT MODE25
             </h2>
             <div className="text-lg opacity-80 mb-8">Boarding in Progress...</div>
             
@@ -542,7 +553,7 @@ export default function Home() {
                 <div className="text-xs font-mono tracking-wider opacity-60">FLIGHT</div>
                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
               </div>
-              <div className="text-lg font-mono font-bold">OBWG25</div>
+              <div className="text-lg font-mono font-bold">FLIGHT MODE25</div>
               <div className="text-sm opacity-80">Praise & Worship</div>
             </div>
             
@@ -604,11 +615,13 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto relative">
           <div className="text-xs tracking-wider opacity-60 mb-12 text-center">03 / QUICK ACCESS</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Schedule", subtitle: "Camp Program", href: "#schedule", available: false, status: "To Be Announced"},
               { title: "Teams", subtitle: "Worship Teams", href: "#teams", available: true },
               { title: "Packing List", subtitle: "What to Bring", href: "/packing", available: true },
+              { title: "News", subtitle: "Latest Updates", href: "#announcements", available: true },
+              { title: "Register", subtitle: "Sign Up", href: process.env.NEXT_PUBLIC_REGISTRATION_URL || "#", available: !!process.env.NEXT_PUBLIC_REGISTRATION_URL, external: true },
               { title: "Contact", subtitle: "Quick Links", href: "#links", available: true }
             ].map((item, index) => (
               <div key={index} className={`group relative ${item.available ? 'cursor-pointer' : 'cursor-default'}`}>
@@ -656,7 +669,9 @@ export default function Home() {
                 
                 {/* Clickable link only for available items */}
                 {item.available && (
-                  item.href.startsWith('/') ? (
+                  item.external ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10"></a>
+                  ) : item.href.startsWith('/') ? (
                     <Link href={item.href} className="absolute inset-0 z-10"></Link>
                   ) : (
                     <a href={item.href} className="absolute inset-0 z-10"></a>
@@ -758,21 +773,21 @@ export default function Home() {
             {[
               {
                 title: "Praise & Worship Team",
-                subtitle: "Contemporary Worship",
-                description: "Leading congregational worship through contemporary music and heartfelt praise",
-                members: "15+ Members"
+                subtitle: "Worship",
+                description: "",
+                members: ""
               },
               {
                 title: "Choir",
-                subtitle: "Traditional & Modern",
-                description: "Blending traditional and contemporary styles through harmonious vocals",
-                members: "25+ Members"
+                subtitle: "Choir",
+                description: "",
+                members: ""
               },
               {
                 title: "Cantonese Worship Team",
-                subtitle: "Cultural Heritage",
-                description: "Worshiping in native language, preserving cultural depth and warmth of faith",
-                members: "12+ Members"
+                subtitle: "Worship",
+                description: "",
+                members: ""
               }
             ].map((team, index) => (
               <div key={index} className="group">
@@ -879,7 +894,20 @@ export default function Home() {
                 <li><a href="#about" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">About Camp</a></li>
                 <li><a href="#teams" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Our Teams</a></li>
                 <li><a href="#schedule" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Schedule</a></li>
-                <li><a href="#registration" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Registration</a></li>
+                {process.env.NEXT_PUBLIC_REGISTRATION_URL ? (
+                  <li>
+                    <a 
+                      href={process.env.NEXT_PUBLIC_REGISTRATION_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors"
+                    >
+                      Registration
+                    </a>
+                  </li>
+                ) : (
+                  <li><a href="#registration" className="opacity-70 hover:opacity-100 hover:text-sky-300 transition-colors">Registration</a></li>
+                )}
               </ul>
             </div>
             
@@ -906,11 +934,25 @@ export default function Home() {
               <div className="flex items-center space-x-6">
                 <span className="text-xs tracking-wider opacity-40">FOLLOW US</span>
                 <div className="flex space-x-4">
-                  <a href="#" className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                  </a>
+                  {process.env.NEXT_PUBLIC_FACEBOOK_GROUP_URL ? (
+                    <a 
+                      href={process.env.NEXT_PUBLIC_FACEBOOK_GROUP_URL} 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors"
+                      title="Join our Facebook Private Group"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                    </a>
+                  ) : (
+                    <a href="#" className="opacity-60 hover:opacity-100 hover:text-sky-300 transition-colors">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
