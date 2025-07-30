@@ -13,8 +13,8 @@ function CountdownTimer() {
   });
 
   useEffect(() => {
-    // Set target date to October 25, 2025
-    const targetDate = new Date('2025-10-25T00:00:00');
+    // Set target date to October 25, 2025 midnight Auckland time
+    const targetDate = new Date('2025-10-25T00:00:00+12:00');
 
     const calculateTimeLeft = () => {
       const now = new Date();
