@@ -637,11 +637,11 @@ export default function Home() {
                   
                   {/* Available items - show arrow */}
                   {item.available && (
-                    <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
+                  <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
+                      <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                   )}
                   
                   {/* Unavailable items - show status */}
@@ -698,43 +698,207 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Announcements Section */}
+      {/* FB Video Section */}
       <section id="announcements" className="relative py-20 px-8 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <div className="text-xs tracking-wider opacity-60 mb-4">04 / LATEST NEWS</div>
-              <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold">Latest Updates</h2>
+              <div className="text-xs tracking-wider opacity-60 mb-4">04 / FB VIDEOS</div>
+              <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold">Camp Updates</h2>
             </div>
-            <a href="#" className="text-sm tracking-wide hover:text-gray-300 transition-colors flex items-center space-x-2">
-              <span>View All</span>
+            {process.env.NEXT_PUBLIC_FACEBOOK_GROUP_URL && (
+              <a 
+                href={process.env.NEXT_PUBLIC_FACEBOOK_GROUP_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm tracking-wide hover:text-gray-300 transition-colors flex items-center space-x-2"
+              >
+                <span>Join FB Group</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/>
               </svg>
             </a>
+            )}
           </div>
           
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {[
-              { date: "2024.12.15", title: "Camp Planning Meeting Notice", category: "Important", isNew: true },
-              { date: "2024.12.10", title: "Team Recruitment Started", category: "Recruitment", isNew: true },
-              { date: "2024.12.05", title: "Camp Theme Confirmed", category: "Update", isNew: false },
-              { date: "2024.12.01", title: "Venue Planning Completed", category: "Progress", isNew: false }
-            ].map((news, index) => (
-              <div key={index} className="group border-b border-white/10 pb-6 hover:border-white/20 transition-colors">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-4 mb-2">
-                      <span className="text-xs opacity-50">{news.date}</span>
-                      <span className="text-xs bg-white/10 px-2 py-1 rounded">{news.category}</span>
-                      {news.isNew && <span className="text-xs bg-red-500/20 text-red-400 px-2 py-1 rounded">NEW</span>}
+              { 
+                date: "2024.12.15", 
+                title: "Flight Mode 2025 Announcement", 
+                category: "FB Video", 
+                isNew: true,
+                description: "Watch our exciting announcement video about Flight Mode 2025! Get all the details about dates, location, and what to expect for this amazing worship retreat.",
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_1 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_1 || "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_1
+              },
+              { 
+                date: "2024.12.10", 
+                title: "Worship Team Recruitment", 
+                category: "FB Video", 
+                isNew: true,
+                description: "Join our worship teams! This video explains the different roles available and how you can be part of our musical ministry for Flight Mode 2025.",
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_2 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_2 || "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_2
+              },
+              { 
+                date: "2024.12.05", 
+                title: "Camp Theme Reveal", 
+                category: "FB Video", 
+                isNew: false,
+                description: "Our camp theme has been revealed! Watch this special video to discover what 'Flight Mode' means and how it will shape our worship experience.",
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_3 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_3 || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_3
+              },
+              { 
+                date: "2024.12.01", 
+                title: "Venue Virtual Tour", 
+                category: "FB Video", 
+                isNew: false,
+                description: "Take a virtual tour of Wainui Park Camp! See the beautiful facilities, worship spaces, and accommodation that will be our home for the weekend.",
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_4 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_4 || "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_4
+              }
+            ].filter(video => video.available).map((video, index) => (
+              <div key={index} className="group bg-gradient-to-br from-gray-800/20 to-gray-900/20 rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 backdrop-blur-sm">
+                {/* Video Thumbnail */}
+                <div 
+                  className="relative aspect-video overflow-hidden cursor-pointer"
+                  onClick={() => {
+                    // Create and open video modal with YouTube embed
+                    const videoModal = document.createElement('div');
+                    videoModal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+                    videoModal.innerHTML = `
+                      <div class="relative bg-black rounded-lg max-w-4xl w-full max-h-full overflow-hidden">
+                        <button class="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2" onclick="this.parentElement.parentElement.remove()">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                          </svg>
+                        </button>
+                        <iframe 
+                          width="100%" 
+                          height="500" 
+                          src="${video.videoUrl}" 
+                          title="Camp Video" 
+                          frameBorder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                          allowFullScreen
+                          style="border-radius: 8px;">
+                        </iframe>
+                      </div>
+                    `;
+                    document.body.appendChild(videoModal);
+                    
+                    // Close on background click
+                    videoModal.addEventListener('click', (e) => {
+                      if (e.target === videoModal) {
+                        videoModal.remove();
+                      }
+                    });
+                  }}
+                >
+                  <img 
+                    src={video.thumbnail} 
+                    alt={video.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {/* FB Video Play Button Overlay */}
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 bg-blue-600/90 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-400/30 shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white ml-1">
+                        <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                      </svg>
                     </div>
-                    <h3 className="text-lg font-medium group-hover:text-white transition-colors">{news.title}</h3>
                   </div>
+                  
+                  {/* FB Video Badge */}
+                  <div className="absolute top-4 left-4">
+                    <div className="flex items-center space-x-2 bg-blue-600/90 px-3 py-1 rounded-full border border-blue-400/30">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      <span className="text-xs text-white font-medium">Video</span>
+                    </div>
+                  </div>
+                  
+                  {/* NEW Badge */}
+                  {video.isNew && (
+                    <div className="absolute top-4 right-4">
+                      <span className="text-xs bg-red-500 text-white px-2 py-1 rounded font-medium animate-pulse">NEW</span>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <span className="text-xs opacity-50">{video.date}</span>
+                    <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded border border-blue-500/30">{video.category}</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors leading-tight">
+                    {video.title}
+                  </h3>
+                  
+                  <p className="text-sm leading-relaxed opacity-80 mb-4">
+                    {video.description}
+                  </p>
+                  
+                                     {/* Play Video Button */}
+                   <div className="flex items-center justify-between">
+                                           <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          // Create and open video modal with YouTube embed
+                          const videoModal = document.createElement('div');
+                          videoModal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+                          videoModal.innerHTML = `
+                            <div class="relative bg-black rounded-lg max-w-4xl w-full max-h-full overflow-hidden">
+                              <button class="absolute top-4 right-4 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2" onclick="this.parentElement.parentElement.remove()">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                              </button>
+                              <iframe 
+                                width="100%" 
+                                height="500" 
+                                src="${video.videoUrl}" 
+                                title="Camp Video" 
+                                frameBorder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowFullScreen
+                                style="border-radius: 8px;">
+                              </iframe>
+                            </div>
+                          `;
+                          document.body.appendChild(videoModal);
+                          
+                          // Close on background click
+                          videoModal.addEventListener('click', (e) => {
+                            if (e.target === videoModal) {
+                              videoModal.remove();
+                            }
+                          });
+                        }}
+                        className="text-sm text-blue-400 hover:text-blue-300 transition-colors flex items-center space-x-2 group/btn"
+                      >
+                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="group-hover/btn:scale-110 transition-transform">
+                         <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                       </svg>
+                                               <span>Play Video</span>
+                     </button>
+                    
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
-                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
+                    </div>
                   </div>
                 </div>
               </div>
