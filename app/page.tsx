@@ -173,10 +173,12 @@ export default function Home() {
 
         {/* Paper Airplane Icon */}
         <div className="absolute top-16 right-8 cursor-pointer group">
+          <a href="#about">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-315 group-hover:scale-110 group-hover:rotate-[57deg]">
             <path d="M3 3L21 12L3 21L8 12L3 3Z" 
                   fill="currentColor" className="drop-shadow-lg"/>
           </svg>
+          </a>
         </div>
 
         {/* Main Heading */}
@@ -377,10 +379,25 @@ export default function Home() {
             </div>
           </div>
         </div>
+        
+        {/* Section Navigation Button */}
+        <div className="flex justify-center mt-16 relative z-20">
+          <a 
+            href="#quick-access"
+            className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">TAKEOFF</span>
+          </a>
+        </div>
       </section>
 
       {/* Quick Navigation Section */}
-      <section className="relative py-20 px-8 z-10">
+      <section id="quick-access" className="relative py-20 px-8 z-10">
         {/* Section background */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/5 via-purple-900/10 to-blue-900/5"></div>
         
@@ -444,6 +461,21 @@ export default function Home() {
             ))}
           </div>
         </div>
+        
+        {/* Section Navigation Button */}
+        <div className="flex justify-center mt-16 relative z-20">
+          <a 
+            href="#announcements"
+            className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">CRUISING</span>
+          </a>
+        </div>
       </section>
 
       {/* Latest Announcements Section */}
@@ -488,6 +520,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        
+        {/* Section Navigation Button */}
+        <div className="flex justify-center mt-16 relative z-20">
+          <a 
+            href="#teams"
+            className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">ALTITUDE</span>
+          </a>
         </div>
       </section>
 
@@ -540,6 +587,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        
+        {/* Section Navigation Button */}
+        <div className="flex justify-center mt-16 relative z-20">
+          <a 
+            href="#links"
+            className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="transform group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">LANDING</span>
+          </a>
         </div>
       </section>
 
