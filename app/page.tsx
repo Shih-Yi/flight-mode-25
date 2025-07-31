@@ -196,8 +196,14 @@ export default function Home() {
           <a href="#teams" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">Teams</a>
         </div>
         
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
-          <Link href="/"><h1 className="text-sm tracking-[0.2em] font-medium">FLIGHT MODE</h1></Link>
+        <div className="absolute left-1/2 transform -translate-x-1/2">
+          <Link href="/" className="hover:scale-105 transition-transform duration-300">
+            <img 
+              src="/flight-mode-logo.png" 
+              alt="Flight Mode" 
+              className="h-12 md:h-12 lg:h-18 w-auto"
+            />
+          </Link>
         </div>
         
         <div className="flex space-x-4 md:space-x-8">
