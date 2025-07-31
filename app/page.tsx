@@ -764,7 +764,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <div className="text-xs tracking-wider opacity-60 mb-4">04 / FB VIDEOS</div>
+              <div className="text-xs tracking-wider opacity-60 mb-4">04 / VIDEOS</div>
               <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold">Camp Updates</h2>
             </div>
             {process.env.NEXT_PUBLIC_FACEBOOK_GROUP_URL && (
@@ -785,45 +785,37 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {[
               { 
-                date: "2024.12.15", 
-                title: "Flight Mode 2025 Announcement", 
-                category: "FB Video", 
+                date: "27.07.2025", 
+                title: "Early bird pricing ends on 31 July! ", 
+                category: "Announcement", 
                 isNew: true,
-                description: "Watch our exciting announcement video about Flight Mode 2025! Get all the details about dates, location, and what to expect for this amazing worship retreat.",
+                description: 
+                  "✈️ Flight Mode: Onboard with God – Important Update!\n\nEarly bird pricing ends on 31 July! If you haven't paid yet, please do so by then to secure your seat at the discounted rate.\n\n🗓️ From 1 August, the camp fee returns to the standard price:\n• $120 for adults\n• $60 for children\n\nOur camp is currently fully booked, but we're still accepting registrations for the waiting list. We'll contact you if a spot becomes available.\n\n🏕️ Can't stay overnight? No problem! Join us for a Day Trip for just $40, including breakfast, lunch, dinner and all activities!\n\nWe're looking forward to taking off with you. Let's focus on God and journey together! ✨",
                 videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_1 || "#",
                 thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_1 || "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 available: !!process.env.NEXT_PUBLIC_FB_VIDEO_1
               },
               { 
-                date: "2024.12.10", 
-                title: "Worship Team Recruitment", 
-                category: "FB Video", 
+                date: "26.07.2025", 
+                title: "Counting down ⏰", 
+                category: "Video", 
                 isNew: true,
-                description: "Join our worship teams! This video explains the different roles available and how you can be part of our musical ministry for Flight Mode 2025.",
+                description: "Counting down ⏰ 90 more sleeps till we take off together ✈️ \n\n #FlightMode25 #OnBoardWithGod",
                 videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_2 || "#",
                 thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_2 || "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 available: !!process.env.NEXT_PUBLIC_FB_VIDEO_2
               },
               { 
-                date: "2024.12.05", 
-                title: "Camp Theme Reveal", 
-                category: "FB Video", 
+                date: "10.07.2025", 
+                title: "Captain Speaking", 
+                category: "Announcement", 
                 isNew: false,
-                description: "Our camp theme has been revealed! Watch this special video to discover what 'Flight Mode' means and how it will shape our worship experience.",
+                description: "Dear brothers and sisters @everyone, this is Captain 🧑‍✈️ Daniel Wu speaking… #flightmode25",
                 videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_3 || "#",
                 thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_3 || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 available: !!process.env.NEXT_PUBLIC_FB_VIDEO_3
               },
-              { 
-                date: "2024.12.01", 
-                title: "Venue Virtual Tour", 
-                category: "FB Video", 
-                isNew: false,
-                description: "Take a virtual tour of Wainui Park Camp! See the beautiful facilities, worship spaces, and accommodation that will be our home for the weekend.",
-                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_4 || "#",
-                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_4 || "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_4
-              }
+
             ].filter(video => video.available).map((video, index) => (
               <div key={index} className="group bg-gradient-to-br from-gray-800/20 to-gray-900/20 rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 backdrop-blur-sm">
                 {/* Video Thumbnail */}
@@ -906,9 +898,111 @@ export default function Home() {
                     {video.title}
                   </h3>
                   
-                  <p className="text-sm leading-relaxed opacity-80 mb-4">
-                    {video.description}
-                  </p>
+                  <div className="text-sm leading-relaxed opacity-80 mb-4 space-y-2">
+                    {Array.isArray(video.description) ? (
+                      video.description.map((paragraph, idx) => (
+                        <p key={idx} className={idx === 0 ? "font-medium text-blue-300" : ""}>
+                          {paragraph}
+                        </p>
+                      ))
+                    ) : (
+                      <div>
+                        <p 
+                          className="whitespace-pre-line cursor-pointer hover:text-blue-200 transition-colors"
+                          style={{
+                            display: '-webkit-box',
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden'
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Create modal for full description
+                            const modal = document.createElement('div');
+                            modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+                            modal.innerHTML = `
+                              <div class="relative bg-gray-900 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden border border-white/20">
+                                <div class="p-6 border-b border-white/10">
+                                  <div class="flex items-center justify-between">
+                                    <h3 class="text-xl font-semibold text-white">${video.title}</h3>
+                                    <button class="text-white hover:text-gray-300 bg-black/50 rounded-full p-2" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()">
+                                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                      </svg>
+                                    </button>
+                                  </div>
+                                  <div class="flex items-center space-x-3 mt-2">
+                                    <span class="text-xs opacity-50">${video.date}</span>
+                                    <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded border border-blue-500/30">${video.category}</span>
+                                  </div>
+                                </div>
+                                <div class="p-6 overflow-y-auto max-h-[60vh]">
+                                  <div class="text-sm leading-relaxed text-gray-300 whitespace-pre-line">${video.description}</div>
+                                </div>
+                              </div>
+                            `;
+                            document.body.appendChild(modal);
+                            
+                            // Close on background click
+                            modal.addEventListener('click', (e) => {
+                              if (e.target === modal) {
+                                modal.remove();
+                              }
+                            });
+                          }}
+                        >
+                          {video.description}
+                        </p>
+                        {video.description.length > 50 && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              // Create modal for full description
+                              const modal = document.createElement('div');
+                              modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+                              modal.innerHTML = `
+                                <div class="relative bg-gray-900 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-hidden border border-white/20">
+                                  <div class="p-6 border-b border-white/10">
+                                    <div class="flex items-center justify-between">
+                                      <h3 class="text-xl font-semibold text-white">${video.title}</h3>
+                                      <button class="text-white hover:text-gray-300 bg-black/50 rounded-full p-2" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                    <div class="flex items-center space-x-3 mt-2">
+                                      <span class="text-xs opacity-50">${video.date}</span>
+                                      <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded border border-blue-500/30">${video.category}</span>
+                                    </div>
+                                  </div>
+                                  <div class="p-6 overflow-y-auto max-h-[60vh]">
+                                    <div class="text-sm leading-relaxed text-gray-300 whitespace-pre-line">${video.description}</div>
+                                  </div>
+                                </div>
+                              `;
+                              document.body.appendChild(modal);
+                              
+                              // Close on background click
+                              modal.addEventListener('click', (e) => {
+                                if (e.target === modal) {
+                                  modal.remove();
+                                }
+                              });
+                            }}
+                            className="inline-flex items-center space-x-2 mt-3 px-3 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 hover:border-blue-400/50 rounded-md text-blue-400 hover:text-blue-300 transition-all duration-200 text-sm font-medium group"
+                          >
+                            <span>Read more</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="transition-transform group-hover:translate-x-0.5">
+                              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
                   
                                      {/* Play Video Button */}
                    <div className="flex items-center justify-between">
