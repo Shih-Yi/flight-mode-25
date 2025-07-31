@@ -190,7 +190,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex justify-between items-center px-4 md:px-8 py-6 relative z-10">
+      <nav className="flex justify-between items-center px-4 md:px-8 py-6 relative z-50">
         <div className="flex space-x-4 md:space-x-8">
           <a href="#about" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">About</a>
           <a href="#teams" className="text-xs md:text-sm tracking-wide hover:text-gray-300 transition-colors">Teams</a>
