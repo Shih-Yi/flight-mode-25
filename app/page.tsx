@@ -40,7 +40,7 @@ function CountdownTimer() {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+    <div className="grid grid-cols-2 landscape:grid-cols-4 md:grid-cols-4 gap-3 landscape:gap-4 md:gap-4 max-w-3xl mx-auto">
       {[
         { label: 'DAYS', value: timeLeft.days },
         { label: 'HOURS', value: timeLeft.hours },
@@ -48,13 +48,13 @@ function CountdownTimer() {
         { label: 'SECONDS', value: timeLeft.seconds }
       ].map((item, index) => (
         <div key={index} className="group">
-          <div className="bg-black/60 rounded-lg p-4 md:p-6 border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 backdrop-blur-sm relative overflow-hidden">
+          <div className="bg-black/60 rounded-lg p-3 landscape:p-4 md:p-6 border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 backdrop-blur-sm relative overflow-hidden">
             {/* Digital Display Effect */}
             <div className="absolute inset-0 bg-gradient-to-b from-blue-400/5 to-transparent pointer-events-none"></div>
             
             {/* LED-style number display */}
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-mono font-bold text-blue-400 mb-2 group-hover:text-blue-300 transition-colors filter drop-shadow-lg"
+              <div className="text-3xl landscape:text-4xl md:text-5xl font-mono font-bold text-blue-400 mb-2 group-hover:text-blue-300 transition-colors filter drop-shadow-lg"
                    style={{
                      textShadow: '0 0 10px rgba(96, 165, 250, 0.7), 0 0 20px rgba(96, 165, 250, 0.3), 0 0 30px rgba(96, 165, 250, 0.1)'
                    }}>
@@ -207,10 +207,10 @@ export default function Home() {
       </nav>
 
       {/* Main Hero Section */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 mt-4">
+      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 pt-8 md:pt-0">
         {/* Creative Studio Label */}
                  {/* Desktop version - two lines */}
-         <div className="absolute top-48 left-8 transform -rotate-90 origin-top-left hidden md:flex">
+         <div className="absolute top-48 left-8 transform -rotate-90 origin-top-left hidden min-[1200px]:flex">
            <div className="flex flex-col space-y-2">
             
           <div className="flex items-center space-x-3">
@@ -232,18 +232,18 @@ export default function Home() {
           </div>
         </div>
           
-          {/* Mobile version - one line, closer to edge */}
-          <div className="absolute top-48 left-2 transform -rotate-90 origin-top-left md:hidden">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-px bg-white/30"></div>
-              <div className="text-xs tracking-[0.3em] opacity-60 font-medium">
+          {/* Mobile and Tablet version - one line, closer to edge */}
+          <div className="absolute top-48 left-5 transform -rotate-90 origin-top-left block min-[1200px]:hidden">
+                          <div className="flex items-center space-x-3">
+                <div className="w-8 lg:w-12 h-px bg-white/30"></div>
+              <div className="text-xs lg:text-sm tracking-[0.3em] opacity-60 font-medium">
                 FLIGHT MODE
               </div>
             </div>
           </div>
 
         {/* Paper Airplane Icon */}
-        <div className="absolute top-16 right-8 cursor-pointer group">
+        <div className="absolute top-16 right-8 cursor-pointer group md:top-16 landscape:top-4">
           <a href="#about">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-315 group-hover:scale-110 group-hover:rotate-[57deg]">
             <path d="M3 3L21 12L3 21L8 12L3 3Z" 
@@ -253,7 +253,7 @@ export default function Home() {
         </div>
 
         {/* Main Heading */}
-        <div className="text-center max-w-6xl mb-20 -mt-48 md:mt-0">
+        <div className="text-center max-w-6xl mb-12 landscape:mb-8 md:mb-20">
           <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight">
             <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
@@ -262,7 +262,7 @@ export default function Home() {
                 style={{
                   backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
                   WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
+                  WebkitTextFillColor: 'transparent',
                 }}
               >
                 ON BOARD
@@ -278,7 +278,7 @@ export default function Home() {
                 ON BOARD
               </span>
             </div>
-            <div className="mb-6 lg:mb-6 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
+            <div className="mb-4 landscape:mb-3 lg:mb-6 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
               <span 
                 className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
@@ -303,8 +303,8 @@ export default function Home() {
             </div>
 
                           {/* Date Display Above Main Heading */}
-        <div className="text-center mb-8">
-          <div className={`text-white text-lg font-medium tracking-wide transition-all duration-300 ${
+        <div className="text-center mb-6 landscape:mb-4">
+          <div className={`text-white text-lg landscape:text-base font-medium tracking-wide transition-all duration-300 ${
             isScrolling ? 'text-yellow-400' : 'text-white'
           }`}
           style={{
@@ -347,19 +347,19 @@ export default function Home() {
         </div>
 
 
-        {/* Description - Mobile Version */}
-        <div className="md:hidden absolute bottom-76 right-4 max-w-xs text-right transform -rotate-90 origin-bottom-right">
-          <div className="space-y-1">
-            <p className="text-xs leading-relaxed opacity-50">
+        {/* Description - Mobile and Tablet Version (All orientations) */}
+        <div className="block min-[1200px]:hidden absolute bottom-8 portrait:bottom-76 right-4 max-w-xs text-right portrait:transform portrait:-rotate-90 portrait:origin-bottom-right">
+          <div className="space-y-2 portrait:space-y-1">
+            <p className="text-xs leading-relaxed opacity-80 portrait:opacity-50">
               Praise & Worship<br/>
-              <span className="font-semibold text-white opacity-90">Camp 2025</span> <br/>
+              <span className="font-semibold text-white portrait:opacity-90">Camp 2025</span>
             </p>
-            <div className="w-12 h-px bg-white/30 ml-auto mt-1"></div>
+            <div className="w-12 h-px bg-white/30 ml-auto portrait:mt-1"></div>
           </div>
         </div>
 
         {/* Description - Desktop Version */}
-        <div className="hidden md:block absolute bottom-32 right-8 max-w-xs text-right">
+        <div className="hidden min-[1200px]:block absolute bottom-32 right-8 max-w-xs text-right">
           <div className="space-y-4">
             <p className="text-sm leading-relaxed opacity-80">
               Praise & Worship<br/>
@@ -370,14 +370,14 @@ export default function Home() {
         </div>
 
         {/* Flight Mode Scroll Indicator */}
-          <div className="absolute bottom-48 md:bottom-1 left-1/2 transform -translate-x-1/2 group cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+          <div className="absolute bottom-20 landscape:bottom-8 md:bottom-1 left-1/2 transform -translate-x-1/2 group cursor-pointer" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
             {/* Outer ring */}
-            <div className="relative w-20 h-20 rounded-full border border-white/15 hover:border-white/30 transition-all duration-500 group-hover:scale-110">
+            <div className="relative w-16 landscape:w-14 md:w-20 h-16 landscape:h-14 md:h-20 rounded-full border border-white/15 hover:border-white/30 transition-all duration-500 group-hover:scale-110">
             
                                         {/* Inner circle with gradient */}
               <div className="absolute inset-3 rounded-full bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 backdrop-blur-sm flex items-center justify-center">
                 {/* Airplane icon pointing down */}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-180 group-hover:translate-y-1">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-180 group-hover:translate-y-1 landscape:w-3 landscape:h-3">
                   <path d="M21 16V14L13 9V3.5C13 2.67 12.33 2 11.5 2S10 2.67 10 3.5V9L2 14V16L10 13.5V19L8 20.5V22L11.5 21L15 22V20.5L13 19V13.5L21 16Z" 
                         fill="currentColor" className="drop-shadow-lg"/>
                 </svg>
@@ -385,7 +385,7 @@ export default function Home() {
             
                           {/* Rotating dot indicator */}
               <div className="absolute inset-0 animate-spin" style={{animationDuration: '4s'}}>
-                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full landscape:w-1.5 landscape:h-1.5"></div>
               </div>
           </div>
           
@@ -402,7 +402,7 @@ export default function Home() {
       </div>
 
       {/* Camp Introduction Section */}
-      <section id="about" className="relative py-2 md:py-32 px-8 z-10 -mt-16 md:mt-0">
+      <section id="about" className="relative py-8 landscape:py-12 md:py-32 px-8 z-10 -mt-8 landscape:mt-0 md:mt-0">
         {/* Section background with gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/10 to-transparent"></div>
         
@@ -479,7 +479,7 @@ export default function Home() {
       </section>
 
       {/* Countdown Section */}
-      <section id="countdown" className="relative py-20 px-8 z-10 overflow-hidden">
+      <section id="countdown" className="relative py-12 landscape:py-16 md:py-20 px-8 z-10 overflow-hidden">
         {/* Airport Terminal Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/15 to-blue-900/10"></div>
         
