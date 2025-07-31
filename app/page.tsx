@@ -207,10 +207,10 @@ export default function Home() {
       </nav>
 
       {/* Main Hero Section */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 pt-8 md:pt-0">
+      <div className="flex flex-col items-center justify-center min-h-screen px-8 relative z-10 pt-8 md:pt-0 -mt-30 md:-mt-16 lg:-mt-8">
         {/* Creative Studio Label */}
                  {/* Desktop version - two lines */}
-         <div className="absolute top-48 left-8 transform -rotate-90 origin-top-left hidden min-[1200px]:flex">
+         <div className="absolute top-48 left-8 transform -rotate-90 origin-top-left hidden min-[1200px]:flex lg:mt-12">
            <div className="flex flex-col space-y-2">
             
           <div className="flex items-center space-x-3">
@@ -233,7 +233,7 @@ export default function Home() {
         </div>
           
           {/* Mobile and Tablet version - one line, closer to edge */}
-          <div className="absolute top-48 left-5 transform -rotate-90 origin-top-left block min-[1200px]:hidden">
+          <div className="absolute top-48 left-5 transform -rotate-90 origin-top-left block min-[1200px]:hidden mt-30">
                           <div className="flex items-center space-x-3">
                 <div className="w-8 lg:w-12 h-px bg-white/30"></div>
               <div className="text-xs lg:text-sm tracking-[0.3em] opacity-60 font-medium">
@@ -243,7 +243,7 @@ export default function Home() {
           </div>
 
         {/* Paper Airplane Icon */}
-        <div className="absolute top-16 right-8 cursor-pointer group md:top-16 landscape:top-4">
+        <div className="absolute top-16 right-8 cursor-pointer group md:top-16 landscape:top-4 mt-24">
           <a href="#about">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white group-hover:text-blue-300 transition-all duration-300 transform rotate-315 group-hover:scale-110 group-hover:rotate-[57deg]">
             <path d="M3 3L21 12L3 21L8 12L3 3Z" 
@@ -255,51 +255,106 @@ export default function Home() {
         {/* Main Heading */}
         <div className="text-center max-w-6xl mb-12 landscape:mb-8 md:mb-20">
           <h1 className="font-space-grotesk font-bold leading-[0.75] tracking-tight">
+            {/* Mobile: One word per line, Desktop: Two words per line */}
             <div className="mb-2 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
-              <span 
-                className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                ON BOARD
-              </span>
+              <div>
+                <span 
+                  className="block md:inline bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  ON
+                </span>
+                <span className="md:ml-6 hidden md:inline"> </span>
+                <span 
+                  className="block md:inline bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  BOARD
+                </span>
+              </div>
               {/* Text stroke for better visibility */}
-              <span 
+              <div 
                 className="absolute inset-0 text-white opacity-20"
-                style={{
-                  WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
-                  WebkitTextFillColor: 'transparent'
-                }}
               >
-                ON BOARD
-              </span>
+                <span 
+                  className="block md:inline"
+                  style={{
+                    WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  ON
+                </span>
+                <span className="md:ml-6 hidden md:inline"> </span>
+                <span 
+                  className="block md:inline"
+                  style={{
+                    WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  BOARD
+                </span>
+              </div>
             </div>
             <div className="mb-4 landscape:mb-3 lg:mb-6 relative text-7xl md:text-9xl lg:text-[12rem] xl:text-[13rem]">
               {/* Background image text */}
-              <span 
-                className="bg-clip-text text-transparent bg-cover bg-center bg-fixed"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                WITH GOD
-              </span>
+              <div>
+                <span 
+                  className="block md:inline bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  WITH
+                </span>
+                <span className="md:ml-6 hidden md:inline"> </span>
+                <span 
+                  className="block md:inline bg-clip-text text-transparent bg-cover bg-center bg-fixed"
+                  style={{
+                    backgroundImage: `url('https://images.unsplash.com/photo-1522158637959-30385a09e0da?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  GOD
+                </span>
+              </div>
               {/* Text stroke for better visibility */}
-              <span 
+              <div 
                 className="absolute inset-0 text-white opacity-20"
-                style={{
-                  WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
-                  WebkitTextFillColor: 'transparent'
-                }}
               >
-                WITH GOD
-              </span>
+                <span 
+                  className="block md:inline"
+                  style={{
+                    WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  WITH
+                </span>
+                <span className="md:ml-6 hidden md:inline"> </span>
+                <span 
+                  className="block md:inline"
+                  style={{
+                    WebkitTextStroke: '3px rgba(255, 255, 255, 0.3)',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  GOD
+                </span>
+              </div>
             </div>
 
                           {/* Date Display Above Main Heading */}
@@ -348,7 +403,7 @@ export default function Home() {
 
 
         {/* Description - Mobile and Tablet Version (All orientations) */}
-        <div className="block min-[1200px]:hidden absolute bottom-8 portrait:bottom-76 right-4 max-w-xs text-right portrait:transform portrait:-rotate-90 portrait:origin-bottom-right">
+        <div className="block min-[1200px]:hidden absolute bottom-38 portrait:bottom-48 right-4 max-w-xs text-right portrait:transform portrait:-rotate-90 portrait:origin-bottom-right">
           <div className="space-y-2 portrait:space-y-1">
             <p className="text-xs leading-relaxed opacity-80 portrait:opacity-50">
               Praise & Worship<br/>
@@ -359,7 +414,7 @@ export default function Home() {
         </div>
 
         {/* Description - Desktop Version */}
-        <div className="hidden min-[1200px]:block absolute bottom-32 right-8 max-w-xs text-right">
+        <div className="hidden min-[1200px]:block absolute bottom-16 right-8 max-w-xs text-right">
           <div className="space-y-4">
             <p className="text-sm leading-relaxed opacity-80">
               Praise & Worship<br/>
