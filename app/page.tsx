@@ -201,7 +201,7 @@ export default function Home() {
             <img 
               src="/flight-mode-logo.png" 
               alt="Flight Mode" 
-              className="h-12 md:h-12 lg:h-18 w-auto"
+              className="h-12 md:h-12 lg:h-14 w-auto"
             />
           </Link>
         </div>
@@ -792,7 +792,7 @@ export default function Home() {
                 description: 
                   "✈️ Flight Mode: Onboard with God – Important Update!\n\nEarly bird pricing ends on 31 July! If you haven't paid yet, please do so by then to secure your seat at the discounted rate.\n\n🗓️ From 1 August, the camp fee returns to the standard price:\n• $120 for adults\n• $60 for children\n\nOur camp is currently fully booked, but we're still accepting registrations for the waiting list. We'll contact you if a spot becomes available.\n\n🏕️ Can't stay overnight? No problem! Join us for a Day Trip for just $40, including breakfast, lunch, dinner and all activities!\n\nWe're looking forward to taking off with you. Let's focus on God and journey together! ✨",
                 videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_1 || "#",
-                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_1 || "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_1,
                 available: !!process.env.NEXT_PUBLIC_FB_VIDEO_1
               },
               { 
@@ -802,8 +802,18 @@ export default function Home() {
                 isNew: true,
                 description: "Counting down ⏰ 90 more sleeps till we take off together ✈️ \n\n #FlightMode25 #OnBoardWithGod",
                 videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_2 || "#",
-                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_2 || "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_2,
                 available: !!process.env.NEXT_PUBLIC_FB_VIDEO_2
+              },
+              { 
+                date: "23.07.2025", 
+                title: "🎤 A greeting from our Flight Mode speaker ✈️", 
+                category: "Greeting from speaker", 
+                isNew: true,
+                description: "Pastor Ricky Wong is excited to journey with us this October — see you at camp! \n\n#FlightMode2025",
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_3 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_3,
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_3
               },
               { 
                 date: "10.07.2025", 
@@ -811,11 +821,10 @@ export default function Home() {
                 category: "Announcement", 
                 isNew: false,
                 description: "Dear brothers and sisters @everyone, this is Captain 🧑‍✈️ Daniel Wu speaking… #flightmode25",
-                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_3 || "#",
-                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_3 || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_3
+                videoUrl: process.env.NEXT_PUBLIC_FB_VIDEO_4 || "#",
+                thumbnail: process.env.NEXT_PUBLIC_FB_THUMBNAIL_4,
+                available: !!process.env.NEXT_PUBLIC_FB_VIDEO_4
               },
-
             ].filter(video => video.available).map((video, index) => (
               <div key={index} className="group bg-gradient-to-br from-gray-800/20 to-gray-900/20 rounded-lg overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 backdrop-blur-sm">
                 {/* Video Thumbnail */}
