@@ -451,7 +451,7 @@ export default function Home() {
           </div>
           
           {/* Flight mode text */}
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
             <span className="text-xs tracking-wider text-blue-300 whitespace-nowrap">BOARDING</span>
           </div>
           
@@ -534,7 +534,7 @@ export default function Home() {
                 <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">DEPARTURE</span>
+            <span className="text-xs tracking-wider opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">DEPARTURE</span>
           </a>
         </div>
       </section>
@@ -664,7 +664,7 @@ export default function Home() {
                 <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">TAKEOFF</span>
+            <span className="text-xs tracking-wider opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">TAKEOFF</span>
           </a>
         </div>
       </section>
@@ -754,7 +754,7 @@ export default function Home() {
                 <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">CRUISING</span>
+            <span className="text-xs tracking-wider opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">CRUISING</span>
           </a>
         </div>
       </section>
@@ -1072,7 +1072,7 @@ export default function Home() {
                 <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">ALTITUDE</span>
+            <span className="text-xs tracking-wider opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">ALTITUDE</span>
           </a>
         </div>
       </section>
@@ -1139,7 +1139,7 @@ export default function Home() {
                 <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="text-xs tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">LANDING</span>
+            <span className="text-xs tracking-wider opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">LANDING</span>
           </a>
         </div>
       </section>
