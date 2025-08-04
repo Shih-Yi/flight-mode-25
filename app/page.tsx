@@ -4,14 +4,15 @@ import { Metadata } from "next";
 import ClientHome from "./components/ClientHome";
 
 type PageProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 type SectionType = 'default' | 'boarding';
 
 // Generate metadata for dynamic Open Graph images
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const section = (searchParams?.section as SectionType) || 'default';
+  const resolvedSearchParams = await searchParams;
+  const section = (resolvedSearchParams?.section as SectionType) || 'default';
   
   const images: Record<SectionType, string> = {
     default: '/flight-mode25.png',
@@ -56,6 +57,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   };
 }
 
-export default function Home({ searchParams }: PageProps) {
+export default async function Home({ searchParams }: PageProps) {
+  // We don't need searchParams in the client component for now
   return <ClientHome />;
 }
