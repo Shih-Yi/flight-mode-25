@@ -526,7 +526,7 @@ export default function ClientHome() {
         {/* Section Navigation Button */}
         <div className="flex justify-center mt-16 relative z-20">
           <a 
-            href="#countdown"
+            href="#boarding"
             className="group flex flex-col items-center space-y-2 text-white/60 hover:text-white transition-all duration-300 relative"
           >
             <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white/40 group-hover:bg-white/5 transition-all duration-300">
